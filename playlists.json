@@ -1,0 +1,22 @@
+{
+    "playlist" : [
+        {
+            "title": "Good News",
+            "artist": "Mac Miller",
+            "url": "assets/audio/good-news.mp3",
+            "cover": "assets/macmiller.png"
+        },
+        {
+            "title": "The Search - Edit",
+            "artist": "NF",
+            "url": "assets/audio/the-search.mp3",
+            "cover": "assets/nf.jpg"
+        },
+        {
+            "title": "Don't Let Me Down",
+            "artist": "The Beatles",
+            "url": "assets/audio/dont-let-me-down.mp3",
+            "cover": "assets/beatles.jpg"
+        }
+    ]
+}
