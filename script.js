@@ -5,6 +5,7 @@ const stopButton = document.getElementById("stop");
 const playButton = document.getElementById("play");
 const previousButton = document.getElementById("anterior");
 const randomButton = document.getElementById("aleatori");
+const progres = document.getElementById("progres");
 const audio = new Audio();
 
 
@@ -35,6 +36,7 @@ function toggleAudio() {
 }
 
 
+// A fer click a l'icona de seguent salta a la seguent canço canviant l'informacio necessaria
 nextButton.addEventListener("click", () => {
 
     currentSongIndex = (currentSongIndex + 1) % playlistData.playlist.length;
@@ -47,7 +49,7 @@ nextButton.addEventListener("click", () => {
     }
 });
 
-
+// Al fer clcik a l'icona de anterior slata a l'anterior canço canviant l'informacio necessaria
 previousButton.addEventListener("click", () => {
     currentSongIndex = (currentSongIndex - 1) % playlistData.playlist.length;
     updateSongInfo(currentSongIndex);
@@ -60,6 +62,31 @@ previousButton.addEventListener("click", () => {
 })
 
 
+
+// Al fer click a l'icona de parar, para la canço i cambia l'icona de pausa al de play
+stopButton.addEventListener("click", () => {
+    if (audio.play) {
+        audio.pause();
+        playButton.classList.remove("fa-pause");
+        playButton.classList.add("fa-play");
+    }
+});
+
+
+// Anar al minut que tries clicant a la barra
+
+
+
+// Actualitzar la barra de progrés quan la cançó estigui en curs
+audio.addEventListener("timeupdate", () => {
+    const currentTime = audio.currentTime;
+    const duration = audio.duration;
+    const percentatgeProgressio = (currentTime / duration) * 100;
+    progres.style.width = `${percentatgeProgressio}%`;
+});
+
+
+//  Acutalizar el temps de la canço, la duracio i el temps que porta
 audio.addEventListener("timeupdate", () => {
 
     // Actualitza barra de progres i el temps

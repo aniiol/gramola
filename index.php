@@ -54,7 +54,7 @@
 
             <!-- Barra del temps de la canço amb els minuts -->
             <div class="botons">
-                <div class="progres"></div>
+                <div class="progres" id="progres"></div>
                 <div class="duracio">
                     <span id="temps-actual">0:00</span>
                     <span id="total-temps">0:00</span>
@@ -79,7 +79,7 @@
 
         </div>
         
-        <!-- Donar informacio de html al js a traves de php -->
+        <!-- Dona informacio de html al js a traves de php -->
         <script>
             var playlistData = <?php echo json_encode($playlistData); ?>;
         </script>
