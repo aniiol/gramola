@@ -53,7 +53,7 @@
             <h3 id="artista"></h3>
 
             <!-- Barra del temps de la canço amb els minuts -->
-            <div class="botons">
+            <div class="barra" id="barra-progres">
                 <div class="progres" id="progres"></div>
                 <div class="duracio">
                     <span id="temps-actual">0:00</span>

@@ -6,6 +6,7 @@ const playButton = document.getElementById("play");
 const previousButton = document.getElementById("anterior");
 const randomButton = document.getElementById("aleatori");
 const progres = document.getElementById("progres");
+const barraProgres = document.getElementById("barra-progres");
 const audio = new Audio();
 
 
@@ -69,11 +70,13 @@ stopButton.addEventListener("click", () => {
         audio.pause();
         playButton.classList.remove("fa-pause");
         playButton.classList.add("fa-play");
+        audio.currentTime = 0;
     }
 });
 
 
 // Anar al minut que tries clicant a la barra
+
 
 
 
