@@ -17,6 +17,12 @@
             "artist": "The Beatles",
             "url": "assets/audio/dont-let-me-down.mp3",
             "cover": "assets/beatles.jpg"
+        },
+        {
+            "title": "Another Love",
+            "artist": "Tom Odell",
+            "url": "assets/audio/another-love.mp3",
+            "cover": "assets/tom-odell.jpg"
         }
     ]
 }
