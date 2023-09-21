@@ -34,6 +34,12 @@ function toggleAudio() {
     }
 }
 
+// Funcio per canviar automaticament la canço quan s'acaba la que esta reproduint-se
+function autoChange () {
+    currentSongIndex = (currentSongIndex + 1) % playlistData.playlist.length;
+    updateSongInfo(currentSongIndex);
+}
+
 // Funcio pel funcionament de saltar a la seguent canço
 function nextSong () {
     currentSongIndex = (currentSongIndex + 1) % playlistData.playlist.length;
@@ -61,7 +67,7 @@ function previousSong () {
 // Funcio per canviar el color de aleatori per despres fer funcionar la funcio randomSong
 function canviarColor () {
     const aleatori = document.getElementById("aleatori");
-    // Obtenir el color actual
+    // windows.getComputedStyle es per obtenir el color actual
     const colorActual = window.getComputedStyle(aleatori).color;
 
     if (colorActual == "rgb(102, 102, 102)") {
@@ -74,37 +80,33 @@ function canviarColor () {
     // Poso els colors amb rgb perque hi han navagadors (com el que utilitzo) que si ho poses amb # no anira
 }
 
-// Funcio pel funcionament de posar modo aleatori
-// function randomSong () {
-//     const colorActual = window.getComputedStyle(aleatori).color;
-//     const randomNum = Math.floor(Math.random() * playlistData.playlist.length);
+// Funcio per donar un index aleatori i que no concideixi amb la posicio actual de l'array
+function randomIndex(currentIndex, playlistLength) {
+    let randomIndex;
 
-//     if (colorActual == "rgb(0, 80, 0)") {
-//         currentSongIndex = randomNum % playlistData.playlist.length;
-//         updateSongInfo(currentSongIndex);
-//         audio.play();
+    do {
+        randomIndex = Math.floor(Math.random() * playlistLength);
+    } while (randomIndex == currentIndex);
 
-//         // Comprovem si la nova cançó és la mateixa que la cançó actual
-//         if (randomNum == currentSongIndex) {
-//             // Si són iguals, ajustem la nova cançó addicionalment
-//             randomNum = (currentSongIndex + 1) % playlistData.playlist.length;
-//         }
-//         console.log(currentSongIndex);
-//     }
-// }
+    return randomIndex;
+}
 
-
+// Funcio pel funcionament del modo aleatori
 function randomSong () {
-    const colorActual = window.getComputedStyle(aleatori).color;
-    const randomNum = Math.floor(Math.random() * playlistData.playlist.length);
+    const newIndex = randomIndex(currentSongIndex, playlistData.playlist.length);
 
     if (colorActual == "rgb(0, 80, 0)") {
-        currentSongIndex = randomNum % playlistData.playlist.length;
+        currentSongIndex = newIndex;
         updateSongInfo(currentSongIndex);
-        audio.play();
+      
+        if (audio.paused) {
+          audio.play();
+          playButton.classList.remove("fa-play");
+          playButton.classList.add("fa-pause");
+        }
     }
-}
- 
+} 
+
 // Funcio pel funcionament del aturar canço
 function stopSong () {
     if (audio.play) {
@@ -117,9 +119,7 @@ function stopSong () {
 
 // Funcio per fer moure la barra de progres
 function progresBarra () {
-    const currentTime = audio.currentTime;
-    const duration = audio.duration;
-    const percentatgeProgressio = (currentTime / duration) * 100;
+    const percentatgeProgressio = (audio.currentTime / audio.duration) * 100;
 
     progres.style.width = `${percentatgeProgressio}%`;
 }
@@ -146,25 +146,28 @@ function formatTime(time) {
 // addEventListener per la funcio toggleAudio en el boto playButton
 playButton.addEventListener("click", toggleAudio);
 
+// addEventListener per la funcio nextSong en audio
+audio.addEventListener("ended", nextSong);
+
 // addEventListener per la funcio nextSong en el boto nextButton
 nextButton.addEventListener("click", nextSong);
-
-// addEventListener per la funcio randomSong en el boto nextButton
-nextButton.addEventListener("click", randomSong);
-
-// addEventListener per la funcio previousSong en el boto previousButton
-previousButton.addEventListener("click", previousSong);
 
 // addEventListener per la funcio randomSong en el boto randomButton
 randomButton.addEventListener("click", canviarColor);
 
+// addEventListener per la funcio randomSong en el boto nextButton
+randomButton.addEventListener("click", randomSong);
+
+// addEventListener per la funcio previousSong en el boto previousButton
+previousButton.addEventListener("click", previousSong);
+
 // addEventListener per la funcio stopSong en el boto stopButton
 stopButton.addEventListener("click", stopSong);
 
-// addEventListener per la funcio progresBarra en el boto audio
+// addEventListener per la funcio progresBarra en audio
 audio.addEventListener("timeupdate", progresBarra);
 
-// addEventListener per la funcio updateTime en el boto audio
+// addEventListener per la funcio updateTime en audio
 audio.addEventListener("timeupdate", updateTime);
 
 

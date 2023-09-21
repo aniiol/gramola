@@ -23,6 +23,12 @@
             "artist": "Tom Odell",
             "url": "assets/audio/another-love.mp3",
             "cover": "assets/tom-odell.jpg"
+        },
+        {
+            "title": "Difference (Interlude)",
+            "artist": "XXXTENTACION",
+            "url": "assets/audio/difference.mp3",
+            "cover": "assets/x.jpg"
         }
     ]
 }
