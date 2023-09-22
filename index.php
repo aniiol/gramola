@@ -1,4 +1,13 @@
+<?php
+    // Llegir el contingut del fitxer json
+    $data = file_get_contents("playlists/playlist1.json");
 
+    // Decodificar el json en una variable php
+    $playlistData = json_decode($data, true);
+
+    $playlistFiles = glob("playlists/*.json");   
+
+?>
 
 <!DOCTYPE html>
 <html lang="ca">
@@ -9,16 +18,7 @@
         <link rel="stylesheet" href="style.css">
         <link rel="icon" type="image/jpg" href="assets/gramola.png"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-        <title>La Gramola</title>
-
-        <?php
-            // Llegir el contingut del fitxer json
-            $jsonData = file_get_contents('playlists.json');
-
-            // Decodificar el json en una variable php
-            $playlistData = json_decode($jsonData, true);
-        ?>
-
+        <title>Gramola</title>
     </head>
     
 
@@ -26,19 +26,37 @@
 
         <!-- TITOL -->
         <div class="titol">
-            <h1>LA GRAMOLA</h1>
-        </div> 
+            <h1>GRAMOLA</h1>
+        </div>
 
 
         <!-- CONTAINER PLAYLISTS -->
         <div class="container-playlists">
             <nav>
                 <ul>
-                    <li><a href="#">Playlist 1</a></li>
-                    <li><a href="#">Playlist 2</a></li>
-                    <li><a href="#">Playlist 3</a></li>
+                    <?php foreach ($playlistFiles as $index => $playlistFile) { ?>
+                        <?php
+                            // Obtenir el nom de arxiu
+                            $playlistName = pathinfo($playlistFile, PATHINFO_FILENAME); 
+                        ?>
+                        <li><a href="#" id="contingut-playlist"><?= $playlistName ?></a></li>
+                    <?php } ?>
                 </ul>
             </nav>
+        </div>
+
+        <!-- CONTAINER ENSENYAR CANÇONS DE LES PLAYLIST -->
+        <div class="container-songs">
+            <table>
+                <?php foreach ($playlistData as $playlist) { ?>
+                    <tr>
+                        <td class="portada"><?php $playlist["cover"]?></td>
+                        <td class="nom-canco"><?php echo $playlist["title"]?></td>
+                        <td class="icona-play"><i class="fa-solid fa-play playlist-play"></i></td>
+                        <br>
+                    </tr>
+                <?php } ?>
+            </table>
         </div>
 
 

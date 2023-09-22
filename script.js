@@ -7,12 +7,13 @@ const previousButton = document.getElementById("anterior");
 const randomButton = document.getElementById("aleatori");
 const progres = document.getElementById("progres");
 const barraProgres = document.getElementById("barra-progres");
+const obrirContingut = document.getElementById("contingut-playlist");
 const audio = new Audio();
 
 
 // Funcio per canviar la foto, el nom de la canço i el de l'artista
 function updateSongInfo(index) {
-    const song = playlistData.playlist[index];
+    const song = playlistData[index];
 
     document.getElementById("canco").textContent = song.title;
     document.getElementById("artista").textContent = song.artist;
@@ -36,13 +37,13 @@ function toggleAudio() {
 
 // Funcio per canviar automaticament la canço quan s'acaba la que esta reproduint-se
 function autoChange () {
-    currentSongIndex = (currentSongIndex + 1) % playlistData.playlist.length;
+    currentSongIndex = (currentSongIndex + 1) % playlistData.length;
     updateSongInfo(currentSongIndex);
 }
 
 // Funcio pel funcionament de saltar a la seguent canço
 function nextSong () {
-    currentSongIndex = (currentSongIndex + 1) % playlistData.playlist.length;
+    currentSongIndex = (currentSongIndex + 1) % playlistData.length;
     updateSongInfo(currentSongIndex);
 
     if (audio.paused) {
@@ -54,7 +55,7 @@ function nextSong () {
 
 // Funcio pel funcionament de saltar a l'anterior canço
 function previousSong () {
-    currentSongIndex = (currentSongIndex - 1) % playlistData.playlist.length;
+    currentSongIndex = (currentSongIndex - 1) % playlistData.length;
     updateSongInfo(currentSongIndex);
 
     if (audio.paused) {
@@ -93,7 +94,7 @@ function randomIndex(currentIndex, playlistLength) {
 
 // Funcio pel funcionament del modo aleatori
 function randomSong () {
-    const newIndex = randomIndex(currentSongIndex, playlistData.playlist.length);
+    const newIndex = randomIndex(currentSongIndex, playlistData.length);
 
     if (colorActual == "rgb(0, 80, 0)") {
         currentSongIndex = newIndex;
