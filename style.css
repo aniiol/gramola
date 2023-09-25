@@ -87,18 +87,19 @@ nav li, a:hover {
 table {
     font-size: 15px;
     border: 1px solid red;
-    width: 75%;
+    width: 90%;
     position: absolute;
     top: 5%;
-    left: 12%;
+    left: 5%;
 }
 
 .portada {
     margin-right: 20px;
 }
 
-.playlist-play {
-    float: right;
+.nom-canco {
+    font-size: 20px;
+    margin-bottom: 20px;
 }
 
 

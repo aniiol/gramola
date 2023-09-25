@@ -35,14 +35,6 @@ function toggleAudio() {
     }
 }
 
-// Funcio per canviar automaticament la canço quan s'acaba la que esta reproduint-se
-function autoChange() {
-    if (!randomMode) {
-        currentSongIndex = (currentSongIndex + 1) % playlistData.songs.length;
-        updateSongInfo(currentSongIndex);
-    }
-}
-
 // Funcio pel funcionament de saltar a la seguent canço
 function nextSong() {
     if (randomMode) {
@@ -61,7 +53,7 @@ function nextSong() {
 
 // Funcio pel funcionament de saltar a l'anterior canço
 function previousSong() {
-    currentSongIndex = (currentSongIndex - 1 + playlistData.songs.length) % playlistData.songs.length;
+    currentSongIndex = (currentSongIndex - 1) % playlistData.songs.length;
     updateSongInfo(currentSongIndex);
 
     if (audio.paused) {

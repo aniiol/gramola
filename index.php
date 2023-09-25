@@ -9,18 +9,20 @@
 
     $data = file_get_contents($files[$playlistId]);
     $playlist = json_decode($data, true);
-    $images = $playlist["songs"];
 
-    // Funcio per saber els noms del arxius json
-    function playlistName($file) {
+    // Funcio per saber el titol dels arxius json
+    function playlistName ($file) {
         $data = file_get_contents($file);
         $playlist = json_decode($data, true);
+
         return $playlist["title"];
     }
 
-    function playlistDescription($file) {
+    // Funcio per saber la descripcio dels arxius json
+    function playlistDescription ($file) {
         $data = file_get_contents($file);
         $playlist = json_decode($data, true);
+        
         return $playlist["description"];
     }
 
@@ -64,19 +66,14 @@
 
         <!-- CONTAINER ENSENYAR CANÇONS DE LES PLAYLIST -->
         <div class="container-songs">
-            <table>
-                <tr>
-                    <?php 
-                    foreach ($images as $codi => $actual) {
+            <ul>
+                <?php
+                    for ($i = 0; $i < count($playlist["songs"]); $i++) {
+                    $name = $playlist["songs"][$i]["title"];
                     ?>
-                        <p>
-                            <?= $actual; ?>
-                        </p>
-                    <?php } ?>
-                    <td class="icona-play"><i class="fa-solid fa-play playlist-play"></i></td>
-                    <br>
-                </tr>
-            </table>
+                    <li class="nom-canco"><i class="fa-solid fa-play" title="Reprodueix"></i> <?php echo $name."<br>"; ?></li>
+                <?php } ?>
+            </ul>
         </div>
 
 
@@ -103,7 +100,7 @@
             <div class="controls">
                 <i class="fa-solid fa-backward" title="Anterior" id="anterior"></i>
                 <i class="fa-solid fa-shuffle" title="Aleatori" id="aleatori"></i>
-                <i class="fa-solid fa-play boto-play" title="Pausa" id="play"></i>
+                <i class="fa-solid fa-play boto-play" title="Reprodueix" id="play"></i>
                 <i class="fa-solid fa-stop" title="Aturar" id="stop"></i>
                 <i class="fa-solid fa-forward" title="Següent" id="seguent"></i>
             </div>
