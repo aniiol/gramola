@@ -1,11 +1,28 @@
 <?php
     // Llegir el contingut del fitxer json
-    $data = file_get_contents("playlists/playlist1.json");
+    $files = glob("playlists/*.json");
 
-    // Decodificar el json en una variable php
-    $playlistData = json_decode($data, true);
+    $playlistId = 0;
+    if (isset($_GET["playlist_id"])) {
+        $playlistId = (int)$_GET["playlist_id"];
+    }
 
-    $playlistFiles = glob("playlists/*.json");   
+    $data = file_get_contents($files[$playlistId]);
+    $playlist = json_decode($data, true);
+    $images = $playlist["songs"];
+
+    // Funcio per saber els noms del arxius json
+    function playlistName($file) {
+        $data = file_get_contents($file);
+        $playlist = json_decode($data, true);
+        return $playlist["title"];
+    }
+
+    function playlistDescription($file) {
+        $data = file_get_contents($file);
+        $playlist = json_decode($data, true);
+        return $playlist["description"];
+    }
 
 ?>
 
@@ -34,12 +51,12 @@
         <div class="container-playlists">
             <nav>
                 <ul>
-                    <?php foreach ($playlistFiles as $index => $playlistFile) { ?>
-                        <?php
-                            // Obtenir el nom de arxiu
-                            $playlistName = pathinfo($playlistFile, PATHINFO_FILENAME); 
-                        ?>
-                        <li><a href="#" id="contingut-playlist"><?= $playlistName ?></a></li>
+                    <?php 
+                    foreach ($files as $i => $file) { ?>
+                        <li>
+                            <a href="index.php?playlist_id=<?= $i ?>"><?= playlistName($file);?></a>
+                            <p class="description"><?= playlistDescription($file);?></p>
+                        </li>
                     <?php } ?>
                 </ul>
             </nav>
@@ -48,14 +65,17 @@
         <!-- CONTAINER ENSENYAR CANÇONS DE LES PLAYLIST -->
         <div class="container-songs">
             <table>
-                <?php foreach ($playlistData as $playlist) { ?>
-                    <tr>
-                        <td class="portada"><?php $playlist["cover"]?></td>
-                        <td class="nom-canco"><?php echo $playlist["title"]?></td>
-                        <td class="icona-play"><i class="fa-solid fa-play playlist-play"></i></td>
-                        <br>
-                    </tr>
-                <?php } ?>
+                <tr>
+                    <?php 
+                    foreach ($images as $codi => $actual) {
+                    ?>
+                        <p>
+                            <?= $actual; ?>
+                        </p>
+                    <?php } ?>
+                    <td class="icona-play"><i class="fa-solid fa-play playlist-play"></i></td>
+                    <br>
+                </tr>
             </table>
         </div>
 
@@ -99,7 +119,7 @@
         
         <!-- Dona informacio de html al js a traves de php -->
         <script>
-            var playlistData = <?php echo json_encode($playlistData); ?>;
+            var playlistData = <?php echo json_encode($playlist); ?>;
         </script>
 
         <script src="script.js"></script>

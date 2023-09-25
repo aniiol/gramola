@@ -1,4 +1,5 @@
 let currentSongIndex = 0;
+let randomMode = false;
 
 const nextButton = document.getElementById("seguent");
 const stopButton = document.getElementById("stop");
@@ -13,14 +14,13 @@ const audio = new Audio();
 
 // Funcio per canviar la foto, el nom de la canço i el de l'artista
 function updateSongInfo(index) {
-    const song = playlistData[index];
+    const song = playlistData.songs[index];
 
     document.getElementById("canco").textContent = song.title;
     document.getElementById("artista").textContent = song.artist;
     document.getElementById("images").src = song.cover;
     audio.src = song.url;
 }
-
 
 // Funcio que fa funcionar el boto de play/stop
 function toggleAudio() {
@@ -36,14 +36,20 @@ function toggleAudio() {
 }
 
 // Funcio per canviar automaticament la canço quan s'acaba la que esta reproduint-se
-function autoChange () {
-    currentSongIndex = (currentSongIndex + 1) % playlistData.length;
-    updateSongInfo(currentSongIndex);
+function autoChange() {
+    if (!randomMode) {
+        currentSongIndex = (currentSongIndex + 1) % playlistData.songs.length;
+        updateSongInfo(currentSongIndex);
+    }
 }
 
 // Funcio pel funcionament de saltar a la seguent canço
-function nextSong () {
-    currentSongIndex = (currentSongIndex + 1) % playlistData.length;
+function nextSong() {
+    if (randomMode) {
+        currentSongIndex = randomIndex(currentSongIndex, playlistData.songs.length);
+    } else {
+        currentSongIndex = (currentSongIndex + 1) % playlistData.songs.length;
+    }
     updateSongInfo(currentSongIndex);
 
     if (audio.paused) {
@@ -54,8 +60,8 @@ function nextSong () {
 }
 
 // Funcio pel funcionament de saltar a l'anterior canço
-function previousSong () {
-    currentSongIndex = (currentSongIndex - 1) % playlistData.length;
+function previousSong() {
+    currentSongIndex = (currentSongIndex - 1 + playlistData.songs.length) % playlistData.songs.length;
     updateSongInfo(currentSongIndex);
 
     if (audio.paused) {
@@ -66,22 +72,22 @@ function previousSong () {
 }
 
 // Funcio per canviar el color de aleatori per despres fer funcionar la funcio randomSong
-function canviarColor () {
+function canviarColor() {
     const aleatori = document.getElementById("aleatori");
-    // windows.getComputedStyle es per obtenir el color actual
     const colorActual = window.getComputedStyle(aleatori).color;
 
     if (colorActual == "rgb(102, 102, 102)") {
-        aleatori.style.color = "rgb(0, 80, 0)";
-
-    } else if (colorActual == "rgb(0, 80, 0)") {
+        aleatori.style.color = "rgb(100, 189, 106)";
+        randomMode = true;
+    } else if (colorActual == "rgb(100, 189, 106)") {
         aleatori.style.color = "rgb(102, 102, 102)";
+        randomMode = false;
     }
 
     // Poso els colors amb rgb perque hi han navagadors (com el que utilitzo) que si ho poses amb # no anira
 }
 
-// Funcio per donar un index aleatori i que no concideixi amb la posicio actual de l'array
+// Funcio per crear un numero aleatori de la mida de l'array i mira que no concideixi amb la posicio actual
 function randomIndex(currentIndex, playlistLength) {
     let randomIndex;
 
