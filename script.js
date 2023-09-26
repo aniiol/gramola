@@ -24,10 +24,12 @@ function updateSongInfo(index) {
 // Funcio que fa funcionar el boto de play/stop
 function toggleAudio() {
     if (audio.paused) {
+        playButton.title = "Parar";
         audio.play();
         playButton.classList.remove("fa-play");
         playButton.classList.add("fa-pause");
     } else {
+        playButton.title = "Reprodueix";
         audio.pause();
         playButton.classList.remove("fa-pause");
         playButton.classList.add("fa-play");
@@ -45,6 +47,7 @@ function nextSong() {
     updateSongInfo(currentSongIndex);
 
     if (audio.paused) {
+        playButton.title = "Parar";
         audio.play();
         playButton.classList.remove("fa-play");
         playButton.classList.add("fa-pause");
@@ -57,6 +60,7 @@ function previousSong() {
     updateSongInfo(currentSongIndex);
 
     if (audio.paused) {
+        playButton.title = "Parar";
         audio.play();
         playButton.classList.remove("fa-play");
         playButton.classList.add("fa-pause");
@@ -99,6 +103,7 @@ function randomSong () {
         updateSongInfo(currentSongIndex);
       
         if (audio.paused) {
+            playButton.title = "Parar";
           audio.play();
           playButton.classList.remove("fa-play");
           playButton.classList.add("fa-pause");
@@ -109,6 +114,7 @@ function randomSong () {
 // Funcio pel funcionament del aturar canço
 function stopSong () {
     if (audio.play) {
+        playButton.title = "Reprodueix";
         audio.pause();
         playButton.classList.remove("fa-pause");
         playButton.classList.add("fa-play");
@@ -117,12 +123,16 @@ function stopSong () {
 }
 
 // Funcio per fer moure la barra de progres
-function progresBarra () {
+function progressBar () {
     const percentatgeProgressio = (audio.currentTime / audio.duration) * 100;
 
     progres.style.width = `${percentatgeProgressio}%`;
 }
 
+// Funcio per fer fucnionar el click a la barra, on cliqui aniria la canço
+function setBar () {
+    
+}
 
 // Funcio per actualitzar el temps que porta i que dura la canço
 function updateTime () {
@@ -178,7 +188,7 @@ previousButton.addEventListener("click", previousSong);
 stopButton.addEventListener("click", stopSong);
 
 // addEventListener per la funcio progresBarra en audio
-audio.addEventListener("timeupdate", progresBarra);
+audio.addEventListener("timeupdate", progressBar);
 
 // addEventListener per la funcio updateTime en audio
 audio.addEventListener("timeupdate", updateTime);

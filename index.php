@@ -54,11 +54,11 @@
             <nav>
                 <ul>
                     <?php 
-                    foreach ($files as $i => $file) { ?>
-                        <li>
-                            <a href="index.php?playlist_id=<?= $i ?>"><?= playlistName($file);?></a>
-                            <p class="description"><?= playlistDescription($file);?></p>
-                        </li>
+                        foreach ($files as $i => $file) { ?>
+                            <li>
+                                <a href="index.php?playlist_id=<?= $i ?>"><?= playlistName($file);?></a>
+                                <p class="description"><?= playlistDescription($file);?></p>
+                            </li>
                     <?php } ?>
                 </ul>
             </nav>
