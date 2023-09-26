@@ -8,7 +8,6 @@ const previousButton = document.getElementById("anterior");
 const randomButton = document.getElementById("aleatori");
 const progres = document.getElementById("progres");
 const barraProgres = document.getElementById("barra-progres");
-const obrirContingut = document.getElementById("contingut-playlist");
 const audio = new Audio();
 
 
@@ -42,6 +41,7 @@ function nextSong() {
     } else {
         currentSongIndex = (currentSongIndex + 1) % playlistData.songs.length;
     }
+
     updateSongInfo(currentSongIndex);
 
     if (audio.paused) {
@@ -140,6 +140,20 @@ function formatTime(time) {
 
     return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
 }
+
+
+// Funcio per canviar l'informacio de canço a traves de l'index de la canço escollida del llistat de la playlist
+function playlistSong(index) {
+    currentSongIndex = index;
+    updateSongInfo(currentSongIndex);
+  
+    if (audio.paused) {
+        audio.play();
+        playButton.classList.remove("fa-play");
+        playButton.classList.add("fa-pause");
+    }
+}
+
 
 
 // addEventListener per la funcio toggleAudio en el boto playButton

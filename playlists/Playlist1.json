@@ -3,10 +3,10 @@
     "description": "Non-copyright",
     "songs" : [
         {
-            "title": "The Best Jazz Club In New Orleans",
-            "artist": "Paolo Argento",
-            "url": "assets/audio/the-best-jazz-club-in-new-orleans.mp3",
-            "cover": "assets/PaoloArgento.jpg"
+            "title": "Tokyo Cafe",
+            "artist": "TVARI",
+            "url": "assets/audio/tokyo-cafe.mp3",
+            "cover": "assets/tvari.png"
         },
         {
             "title": "A Long Way",

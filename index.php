@@ -71,7 +71,11 @@
                     for ($i = 0; $i < count($playlist["songs"]); $i++) {
                     $name = $playlist["songs"][$i]["title"];
                     ?>
-                    <li class="nom-canco"><i class="fa-solid fa-play" title="Reprodueix"></i> <?php echo $name."<br>"; ?></li>
+                    <li class="nom-canco">
+                        <i class="fa-solid fa-play reprodueix-llista" title="Reprodueix" id="canco<?php echo $i ?>" onclick="playlistSong(<?php echo $i ?>)"></i>
+                        <p><?php echo $name."<br>"; ?></p>
+                    </li>
+
                 <?php } ?>
             </ul>
         </div>

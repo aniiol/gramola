@@ -84,22 +84,18 @@ nav li, a:hover {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
 }
 
-table {
-    font-size: 15px;
-    border: 1px solid red;
-    width: 90%;
-    position: absolute;
-    top: 5%;
-    left: 5%;
-}
-
-.portada {
-    margin-right: 20px;
-}
-
 .nom-canco {
     font-size: 20px;
-    margin-bottom: 20px;
+    list-style: none;
+}
+
+.nom-canco p {
+    display: inline-block;
+}
+
+.reprodueix-llista {
+    position: relative;
+    top: 5px;
 }
 
 
