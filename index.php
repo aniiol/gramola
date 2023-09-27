@@ -30,94 +30,91 @@
 
 <!DOCTYPE html>
 <html lang="ca">
-
+    
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css">
-        <link rel="icon" type="image/jpg" href="assets/gramola.png"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
         <title>Gramola</title>
     </head>
     
-
     <body>
+        <header>
+            <div class="titol">
+                <h1>Gramola</h1>
+            </div>
+        </header>
 
-        <!-- TITOL -->
-        <div class="titol">
-            <h1>GRAMOLA</h1>
-        </div>
+        <div class="principal">
 
 
-        <!-- CONTAINER PLAYLISTS -->
-        <div class="container-playlists">
-            <nav>
+            <!-- CONTAINER PLAYLISTS -->
+            <div class="container-playlists">
                 <ul>
                     <?php 
                         foreach ($files as $i => $file) { ?>
-                            <li>
-                                <a href="index.php?playlist_id=<?= $i ?>"><?= playlistName($file);?></a>
-                                <p class="description"><?= playlistDescription($file);?></p>
+                            <li> 
+                                <span>
+                                    <a href="index.php?playlist_id=<?= $i ?>"><?= playlistName($file);?></a>
+                                    <p class="description"><?= playlistDescription($file);?></p>
+                                </span>
                             </li>
                     <?php } ?>
                 </ul>
-            </nav>
-        </div>
-
-        <!-- CONTAINER ENSENYAR CANÇONS DE LES PLAYLIST -->
-        <div class="container-songs">
-            <ul>
-                <?php
-                    for ($i = 0; $i < count($playlist["songs"]); $i++) {
-                    $name = $playlist["songs"][$i]["title"];
-                    ?>
-                    <li class="nom-canco">
-                        <i class="fa-solid fa-play reprodueix-llista" title="Reprodueix" id="canco<?php echo $i ?>" onclick="playlistSong(<?php echo $i ?>)"></i>
-                        <p><?php echo $name."<br>"; ?></p>
-                    </li>
-
-                <?php } ?>
-            </ul>
-        </div>
+            </div> 
 
 
-        <!-- CONTAINER REPRODUCTOR -->
-        <div class="container-reproductor">
-            <div class="img-canco">
-                <img src="" class="activa" id="images">
-            </div>
+            <!-- CONTAINER REPRODUCTOR -->
+            <div class="container-reproductor">
 
-            <!-- Nom canço/artista -->
-            <h2 id="canco"></h2>
-            <h3 id="artista"></h3>
-
-            <!-- Barra del temps de la canço amb els minuts -->
-            <div class="barra" id="barra-progres">
-                <div class="progres" id="progres"></div>
-                <div class="duracio">
-                    <span id="temps-actual">0:00</span>
-                    <span id="total-temps">0:00</span>
+                <div class="img-canco">
+                    <img src="" class="activa" id="images">
                 </div>
+
+                <!-- Nom canço/artista -->
+                <h2 id="canco"></h2>
+                <h3 id="artista"></h3>
+
+                <!-- Barra del temps de la canço amb els minuts -->
+                <div class="barra" id="barra-progres">
+                    <div class="progres" id="progres"></div>
+                    <div class="duracio">
+                        <span id="temps-actual">0:00</span>
+                        <span id="total-temps">0:00</span>
+                    </div>
+                </div>
+
+
+                <!-- Controls principals -->
+                <div class="controls">
+                    <i class="fa-solid fa-backward" title="Anterior" id="anterior"></i>
+                    <i class="fa-solid fa-shuffle" title="Aleatori" id="aleatori"></i>
+                    <i class="fa-solid fa-play boto-play" title="Reprodueix" id="play"></i>
+                    <i class="fa-solid fa-stop" title="Aturar" id="stop"></i>
+                    <i class="fa-solid fa-forward" title="Següent" id="seguent"></i>
+                </div>
+
+
             </div>
 
-            <!-- Controls principals -->
-            <div class="controls">
-                <i class="fa-solid fa-backward" title="Anterior" id="anterior"></i>
-                <i class="fa-solid fa-shuffle" title="Aleatori" id="aleatori"></i>
-                <i class="fa-solid fa-play boto-play" title="Reprodueix" id="play"></i>
-                <i class="fa-solid fa-stop" title="Aturar" id="stop"></i>
-                <i class="fa-solid fa-forward" title="Següent" id="seguent"></i>
+            <!-- CONTAINER ENSENYAR CANÇONS DE LES PLAYLIST -->
+            <div class="container-songs">
+                <ul>
+                    <?php
+                        for ($i = 0; $i < count($playlist["songs"]); $i++) {
+                        $name = $playlist["songs"][$i]["title"];
+                        ?>
+                        <li class="nom-canco">
+                            <i class="fa-solid fa-play reprodueix-llista" title="Reprodueix" id="canco<?php echo $i ?>" onclick="playlistSong(<?php echo $i ?>)"></i>
+                            <p><?php echo $name."<br>"; ?></p>
+                        </li>
+
+                    <?php } ?>
+                </ul>
             </div>
+        </div>                   
 
-
-            <!-- Control de volum -->
-            <i class="fa-solid fa-volume-low icona-volum" title="Volum"></i>
-            <div class="master-volum">
-                <div class="nivell-volum"></div>
-            </div>
-
-        </div>
-        
         <!-- Dona informacio de html al js a traves de php -->
         <script>
             var playlistData = <?php echo json_encode($playlist); ?>;
