@@ -96,23 +96,46 @@
                     <i class="fa-solid fa-forward" title="Següent" id="seguent"></i>
                 </div>
 
+                <div class="volum">
+                    <div class="icona-volum">
+                        <i class="fa-solid fa-volume-low"></i>
+                    </div>
+                    <div class="barra-volum">
+                        <div class="progres-volum" id="progres-volum"></div>
+                    </div>
+                </div>
+
 
             </div>
 
             <!-- CONTAINER ENSENYAR CANÇONS DE LES PLAYLIST -->
             <div class="container-songs">
-                <ul>
                     <?php
                         for ($i = 0; $i < count($playlist["songs"]); $i++) {
-                        $name = $playlist["songs"][$i]["title"];
+                            $name = $playlist["songs"][$i]["title"];
                         ?>
-                        <li class="nom-canco">
-                            <i class="fa-solid fa-play reprodueix-llista" title="Reprodueix" id="canco<?php echo $i ?>" onclick="playlistSong(<?php echo $i ?>)"></i>
-                            <p><?php echo $name."<br>"; ?></p>
-                        </li>
+                        <div class="cancons-playlist">
+                            <div class="icona-play-canco">
+                                <i class="fa-solid fa-play reprodueix-llista" title="Reprodueix" id="canco<?php echo $i ?>" onclick="playlistSong(<?php echo $i ?>)"></i>
+                            </div>
 
+                            <div class="nom-canco">   
+                                <p><?php echo $name; ?></p>
+                            </div>
+
+                            <div class="eliminar-canco">
+                                <a href="delete.php?song=<?= $i?>&playlist_id=<?= $playlistId ?>">
+                                    <i class="fa-solid fa-trash" title="Esborrar"></i>
+                                </a>
+                            </div>
+                        </div>
                     <?php } ?>
-                </ul>
+
+                    <div class="afegir-canco">
+                        <a href="add-form.php?playlist_id=<?php $playlistId ?>">
+                            <button class="afegir-canco">Afegeix Nova Cançó</button>
+                        </a>
+                    </div>
             </div>
         </div>                   
 

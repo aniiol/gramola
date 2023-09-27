@@ -24,7 +24,7 @@ function updateSongInfo(index) {
 // Funcio que fa funcionar el boto de play/stop
 function toggleAudio() {
     if (audio.paused) {
-        playButton.title = "Parar";
+        playButton.title = "Pausa";
         audio.play();
         playButton.classList.remove("fa-play");
         playButton.classList.add("fa-pause");
@@ -45,26 +45,15 @@ function nextSong() {
     }
 
     updateSongInfo(currentSongIndex);
-
-    if (audio.paused) {
-        playButton.title = "Parar";
-        audio.play();
-        playButton.classList.remove("fa-play");
-        playButton.classList.add("fa-pause");
-    }
+    toggleAudio();
 }
 
 // Funcio pel funcionament de saltar a l'anterior canço
 function previousSong() {
     currentSongIndex = (currentSongIndex - 1) % playlistData.songs.length;
+    
     updateSongInfo(currentSongIndex);
-
-    if (audio.paused) {
-        playButton.title = "Parar";
-        audio.play();
-        playButton.classList.remove("fa-play");
-        playButton.classList.add("fa-pause");
-    }
+    toggleAudio();
 }
 
 // Funcio per canviar el color de aleatori per despres fer funcionar la funcio randomSong
@@ -97,17 +86,13 @@ function randomIndex(currentIndex, playlistLength) {
 // Funcio pel funcionament del modo aleatori
 function randomSong () {
     const newIndex = randomIndex(currentSongIndex, playlistData.length);
+    const colorActual = window.getComputedStyle(aleatori).color;
 
     if (colorActual == "rgb(0, 80, 0)") {
         currentSongIndex = newIndex;
+
         updateSongInfo(currentSongIndex);
-      
-        if (audio.paused) {
-            playButton.title = "Parar";
-          audio.play();
-          playButton.classList.remove("fa-play");
-          playButton.classList.add("fa-pause");
-        }
+        toggleAudio();
     }
 } 
 
@@ -155,13 +140,9 @@ function formatTime(time) {
 // Funcio per canviar l'informacio de canço a traves de l'index de la canço escollida del llistat de la playlist
 function playlistSong(index) {
     currentSongIndex = index;
+
     updateSongInfo(currentSongIndex);
-  
-    if (audio.paused) {
-        audio.play();
-        playButton.classList.remove("fa-play");
-        playButton.classList.add("fa-pause");
-    }
+    toggleAudio();
 }
 
 

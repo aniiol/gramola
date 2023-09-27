@@ -167,6 +167,34 @@ h3 {
 }
 
 
+/* ############# VOLUM */
+.volum {
+    display: flex;
+    align-items: center;
+}
+
+.icona-volum i {
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.barra-volum {
+    background-color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 6px;
+    width: 12%;
+    margin-left: -20px;
+}
+
+.progres-volum {
+    background-color: #212121;
+    border-radius: 5px;
+    height: 100%;
+    width: 0%;
+}
+
+
 /* ############# CONTAINER SONGS */
 .container-songs {
     background-color: #e7e7e7;
@@ -182,16 +210,27 @@ h3 {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
 }
 
+.cancons-playlist {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
 .nom-canco {
+    width: 100%;
     font-size: 20px;
-    list-style: none;
 }
 
-.nom-canco p {
-    display: inline-block;
+.eliminar-canco i {
+    font-size: 12px;
 }
 
-.reprodueix-llista {
-    position: relative;
-    top: 5px;
+.afegir-canco button {
+    height: 30px;
+    width: 50%;
+    border-radius: 20px;
+    margin-left: 80px;
+    background-color: rgb(198, 198, 198);
 }
