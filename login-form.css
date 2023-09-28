@@ -16,8 +16,8 @@ body {
 
 .principal {
     background-color: #e7e7e7;
-    height: 350px;
-    width: 300px;
+    height: 250px;
+    width: 250px;
     border-radius: 20px;
     box-shadow: 0 15px 30px #0000004d;
     transition: all 0.5s ease;
@@ -28,8 +28,9 @@ body {
 }
 
 form {
-    margin-left: 20px;
-    margin-right: 20px;
+    text-align: center;
+    margin: 50px 20px auto 20px;
+
 }
 
 h1 {
@@ -44,7 +45,6 @@ button {
     width: 100px;
     height: 25px;
     border-radius: 8px;
-    margin-top: 30px;
-    margin-left: 80px;
+    margin-top: 50px;
     cursor: pointer;
 }

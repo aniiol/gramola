@@ -15,14 +15,41 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 50px;
 }
 
-/* ############# TITOl */
+/* ############# HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .titol h1 {
     font-size: 50px;
     text-shadow: 1px 2px 3px black;
     margin-left: 140px;
+}
+
+.session {
+    float: right;
+    margin-right: 30px;
+    margin-bottom: 50px;
+}
+
+.session button {
+    height: 30px;
+    width: 110px;
+    border-radius: 10px;
+    margin-left: 80px;
+    background-color: #c6c6c6;
+    cursor: pointer;
+
+    box-shadow: 0 5px 10px #0000004d;
+    transition: all 0.5s ease;
+}
+
+.session button:hover {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
 }
 
 
@@ -213,7 +240,7 @@ h3 {
     align-items: center;
     width: 80%;
     margin-left: 40px;
-    margin-top: 20px;
+    margin-top: 5px;
 }
 
 .nom-canco {
@@ -228,7 +255,8 @@ h3 {
 .afegir-canco button {
     height: 30px;
     width: 50%;
-    border-radius: 20px;
+    border-radius: 10px;
     margin-left: 80px;
-    background-color: rgb(198, 198, 198);
+    background-color: #c6c6c6;
+    cursor: pointer;
 }

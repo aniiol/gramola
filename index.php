@@ -45,6 +45,12 @@
             <div class="titol">
                 <h1>Gramola</h1>
             </div>
+
+            <div class="session">
+                <a href="login-form.php">
+                    <button>Iniciar Sessió</button>
+                </a>
+            </div>
         </header>
 
         <div class="principal">
