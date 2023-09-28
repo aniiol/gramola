@@ -2,23 +2,34 @@
     $files = glob("playlists/*.json");
 
     $playlistId = 0;
-    if (isset($_GET["playlist_id"])) {
-        $playlistId = (int)$_GET["playlist_id"];
+    if (isset($_POST["playlist_id"])) {
+        $playlistId = (int)$_POST["playlist_id"];
     }
 
     $data = file_get_contents($files[$playlistId]);
     $playlist = json_decode($data, true);
 
-    $imgs = $playlist["songs"];
+    // Obtenir dades del formulari
+    $name_song = $_POST["name-song"];
+    $name_artist = $_POST["name-artist"];
+    $imageName = $_FILES["images"]["name"];
+    $songName = $_FILES["songs"]["name"];
 
-    move_uploaded_file($_FILES["song"]["temp_name"], "assets/" . $_FILES["image"]["name"]);
+    // Crear una altre array per afegir informacio de la canço
+    $newSong = [
+        "title" => $name_song,
+        "artist" => $name_artist,
+        "url" => "assets/audio/{$songName}",
+        "cover" => "assets/{$imageName}"
+    ];
 
-    $imgs[] = $_FILES["image"]["name"];
+    $playlist["songs"][] = $newSong;
 
-    $playlist["songs"] = $imgs;
-    $imagesJSON = json_encode($playlist);
+    $updatedPlaylistJSON = json_encode($playlist);
+    file_put_contents($files[$playlistId], $updatedPlaylistJSON);
 
-    file_put_contents($files[$playlistId], $imagesJSON);
+    move_uploaded_file($_FILES["images"]["tmp_name"], "assets/{$imageName}");
+    move_uploaded_file($_FILES["songs"]["tmp_name"], "assets/audio/{$songName}");
 
     header("Location: index.php?playlist_id={$playlistId}");
 ?>

@@ -132,7 +132,7 @@
                     <?php } ?>
 
                     <div class="afegir-canco">
-                        <a href="add-form.php?playlist_id=<?php $playlistId ?>">
+                        <a href="add-form.php?playlist_id=<?= $playlistId ?>">
                             <button class="afegir-canco">Afegeix Nova Cançó</button>
                         </a>
                     </div>
