@@ -94,7 +94,7 @@ function randomSong () {
         updateSongInfo(currentSongIndex);
         toggleAudio();
     }
-} 
+}
 
 // Funcio pel funcionament del aturar canço
 function stopSong () {
@@ -115,8 +115,14 @@ function progressBar () {
 }
 
 // Funcio per fer fucnionar el click a la barra, on cliqui aniria la canço
-function setBar () {
-    
+function setBar(event) {
+    const barraAmple = barraProgres.clientWidth;
+    const clicX = event.offsetX; // OffsetX et dona la posició del clic respecte de l'element actual
+
+    const nouTemps = (clicX / barraAmple) * audio.duration;
+    audio.currentTime = nouTemps;
+
+    // amb chrome no funcionaria, millor amb firefox
 }
 
 // Funcio per actualitzar el temps que porta i que dura la canço
@@ -167,6 +173,9 @@ previousButton.addEventListener("click", previousSong);
 
 // addEventListener per la funcio stopSong en el boto stopButton
 stopButton.addEventListener("click", stopSong);
+
+// addEventListener per la funcio setBar en barraProgres
+barraProgres.addEventListener("click", setBar);
 
 // addEventListener per la funcio progresBarra en audio
 audio.addEventListener("timeupdate", progressBar);

@@ -5,7 +5,14 @@
     $playlistId = 0;
     if (isset($_GET["playlist_id"])) {
         $playlistId = (int)$_GET["playlist_id"];
+    } else {
+        // si no tenim playlist_id amb el get comprovem si esta a la cookie
+        if (isset($_COOKIE["playlist_id"])) {
+            $playlistId = (int)$_COOKIE["playlist_id"];
+        }
     }
+
+    setcookie("playlist_id", $playlistId, strtotime("+7 days")); // guarda la cookie per 7 dies
 
     $data = file_get_contents($files[$playlistId]);
     $playlist = json_decode($data, true);
@@ -47,7 +54,7 @@
             </div>
 
             <div class="session">
-                <a href="login-form.php">
+                <a href="login/login-form.php">
                     <button>Iniciar Sessió</button>
                 </a>
             </div>
@@ -130,7 +137,7 @@
                             </div>
 
                             <div class="eliminar-canco">
-                                <a href="delete.php?song=<?= $i?>&playlist_id=<?= $playlistId ?>">
+                                <a href="cancons/delete.php?song=<?= $i?>&playlist_id=<?= $playlistId ?>">
                                     <i class="fa-solid fa-trash" title="Esborrar"></i>
                                 </a>
                             </div>
@@ -138,7 +145,7 @@
                     <?php } ?>
 
                     <div class="afegir-canco">
-                        <a href="add-form.php?playlist_id=<?= $playlistId ?>">
+                        <a href="cancons/add-form.php?playlist_id=<?= $playlistId ?>">
                             <button class="afegir-canco">Afegeix Nova Cançó</button>
                         </a>
                     </div>

@@ -1,5 +1,5 @@
 <?php
-    $files = glob("playlists/*.json");
+    $files = glob("../playlists/*.json");
 
     $playlistId = 0;
     if (isset($_POST["playlist_id"])) {
@@ -19,8 +19,8 @@
     $newSong = [
         "title" => $name_song,
         "artist" => $name_artist,
-        "url" => "assets/audio/{$songName}",
-        "cover" => "assets/{$imageName}"
+        "url" => "../assets/audio/{$songName}",
+        "cover" => "../assets/{$imageName}"
     ];
 
     $playlist["songs"][] = $newSong;
@@ -28,8 +28,8 @@
     $updatedPlaylistJSON = json_encode($playlist);
     file_put_contents($files[$playlistId], $updatedPlaylistJSON);
 
-    move_uploaded_file($_FILES["images"]["tmp_name"], "assets/{$imageName}");
-    move_uploaded_file($_FILES["songs"]["tmp_name"], "assets/audio/{$songName}");
+    move_uploaded_file($_FILES["images"]["tmp_name"], "../assets/{$imageName}");
+    move_uploaded_file($_FILES["songs"]["tmp_name"], "../assets/audio/{$songName}");
 
-    header("Location: index.php?playlist_id={$playlistId}");
+    header("Location: ../index.php?playlist_id={$playlistId}");
 ?>

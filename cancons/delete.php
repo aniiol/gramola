@@ -1,5 +1,5 @@
 <?php
-    $files = glob("playlists/*.json");
+    $files = glob("../playlists/*.json");
 
     $playlistId = 0;
     if (isset($_GET["playlist_id"])) {
@@ -19,5 +19,5 @@
 
     file_put_contents($files[$playlistId], $imagesJSON);
 
-    header("Location: index.php?playlist_id={$playlistId}");
+    header("Location: ../index.php?playlist_id={$playlistId}");
 ?>

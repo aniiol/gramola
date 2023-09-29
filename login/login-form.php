@@ -10,7 +10,7 @@
 
     <body>
         <div class="principal">
-            <form action="add.php" method="post" enctype="multipart/form-data">
+            <form action="info.php" method="post" enctype="multipart/form-data">
 
                 <h1>Nom:</h1>
                 <input type="text" name="name-song" class="text-input">
