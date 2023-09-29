@@ -111,11 +111,15 @@
 
                 <div class="volum">
                     <div class="icona-volum">
-                        <i class="fa-solid fa-volume-low"></i>
+                        <i class="fa-solid fa-volume-high" id="icona-volum"></i>
                     </div>
+
                     <div class="barra-volum">
                         <div class="progres-volum" id="progres-volum"></div>
                     </div>
+                    
+                    <i class="fa-solid fa-minus" id="less-volume"></i>
+                    <i class="fa-solid fa-plus" id="more-volume"></i>
                 </div>
 
 

@@ -8,6 +8,10 @@ const previousButton = document.getElementById("anterior");
 const randomButton = document.getElementById("aleatori");
 const progres = document.getElementById("progres");
 const barraProgres = document.getElementById("barra-progres");
+const volumeBar = document.getElementById("progres-volum");
+const iconVolume = document.getElementById("icona-volum");
+const moreVolume = document.getElementById("more-volume");
+const lessVolume = document.getElementById("less-volume");
 const audio = new Audio();
 
 
@@ -115,9 +119,9 @@ function progressBar () {
 }
 
 // Funcio per fer fucnionar el click a la barra, on cliqui aniria la canço
-function setBar(event) {
+function setBar (event) {
     const barraAmple = barraProgres.clientWidth;
-    const clicX = event.offsetX; // OffsetX et dona la posició del clic respecte de l'element actual
+    const clicX = event.offsetX; // OffsetX et dona la posicio del clic respecte de l'element actual
 
     const nouTemps = (clicX / barraAmple) * audio.duration;
     audio.currentTime = nouTemps;
@@ -152,6 +156,41 @@ function playlistSong(index) {
 }
 
 
+// Funcio per canviar el volum, pujar o baixar
+function changeMoreVolume () {
+    audio.volume = audio.volume + 0.1;
+    changeVolumeIcon();
+}
+
+function changeLessVolume () {
+    audio.volume = audio.volume - 0.1;
+    changeVolumeIcon();
+}
+
+function changeVolumeIcon () {
+    if (audio.volume < 0.1) {
+        iconVolume.classList.remove("fa-volume-low");
+        iconVolume.classList.remove("fa-volume-high");
+        iconVolume.classList.add("fa-volume-off");
+    } else if (audio.volume >= 0.1 && audio.volume < 0.7) {
+        iconVolume.classList.remove("fa-volume-off");
+        iconVolume.classList.remove("fa-volume-high");
+        iconVolume.classList.add("fa-volume-low");
+    } else if (audio.volume >= 0.7) {
+        iconVolume.classList.remove("fa-volume-off");
+        iconVolume.classList.remove("fa-volume-low");
+        iconVolume.classList.add("fa-volume-high");
+    }
+}
+
+
+function moveMoreVolumeBar () {
+    
+}
+
+function moveLessVolumeBar () {
+    
+}
 
 // addEventListener per la funcio toggleAudio en el boto playButton
 playButton.addEventListener("click", toggleAudio);
@@ -183,6 +222,12 @@ audio.addEventListener("timeupdate", progressBar);
 // addEventListener per la funcio updateTime en audio
 audio.addEventListener("timeupdate", updateTime);
 
+// addEventListener per la funcio changeMoreVolume en moreVolume
+moreVolume.addEventListener("click", changeMoreVolume);
+moreVolume.addEventListener("click", moveMoreVolumeBar);
+
+// addEventListener per la funcio changeLessVolume en lessVolume
+lessVolume.addEventListener("click", changeLessVolume);
 
 // Inicia la primera canço de la llista amb la seva informacio
 updateSongInfo(currentSongIndex);

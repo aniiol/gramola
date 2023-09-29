@@ -198,9 +198,22 @@ h3 {
     align-items: center;
 }
 
-.icona-volum i {
-    font-size: 20px;
+.fa-volume-off {
+    font-size: 25px;
     margin-left: 20px;
+    margin-right: 45px;
+}
+
+.fa-volume-low {
+    font-size: 25px;
+    margin-left: 20px;
+    margin-right: 39px;
+}
+
+.fa-volume-high {
+    font-size: 25px;
+    margin-left: 20px;
+    margin-right: 30px;
 }
 
 .barra-volum {
@@ -216,7 +229,13 @@ h3 {
     background-color: #212121;
     border-radius: 5px;
     height: 100%;
-    width: 0%;
+    width: 100%;
+}
+
+.fa-plus, .fa-minus {
+    margin-left: 10px;
+    margin-right: 5px;
+    font-size: 15px;
 }
 
 
