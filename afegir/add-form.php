@@ -25,7 +25,7 @@
                 <h1>Pista d'audio:</h1>
                 <input type="file" name="songs" accept = ".mp3">
                 
-                <button>Submit</button>
+                <button>Enviar</button>
             </form>
         </div>
     </body>

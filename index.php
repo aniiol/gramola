@@ -14,9 +14,12 @@
 
     setcookie("playlist_id", $playlistId, strtotime("+7 days")); // guarda la cookie per 7 dies
 
-    $data = file_get_contents($files[$playlistId]);
-    $playlist = json_decode($data, true);
-
+    // Mirem que $files no estigui buit i que la ruta esta ben apuntada (si no es fa aixo, salta un error quan vull eliminar alguna playlist)
+    if (isset($files[$playlistId]) && file_exists($files[$playlistId])) {
+        $data = file_get_contents($files[$playlistId]);
+        $playlist = json_decode($data, true);
+    }
+    
     // Funcio per saber el titol dels arxius json
     function playlistName ($file) {
         $data = file_get_contents($file);
@@ -68,14 +71,27 @@
                 <ul>
                     <?php 
                         foreach ($files as $i => $file) { ?>
-                            <li> 
-                                <span>
+                        <li>
+                            <div class="playlist">
+                                <div class="nom-playlist">
                                     <a href="index.php?playlist_id=<?= $i ?>"><?= playlistName($file);?></a>
                                     <p class="description"><?= playlistDescription($file);?></p>
-                                </span>
-                            </li>
+                                </div>
+
+                                <div class="eliminar-playlist">
+                                    <a href="afegir/delete-playlist.php?playlist_id=<?= $playlistId ?>">
+                                        <i class="fa-solid fa-trash" title="Esborrar"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
                     <?php } ?>
                 </ul>
+                <div class="afegir-playlist">
+                    <a href="afegir/add-playlist.php?playlist_id=<?= $playlistId ?>">
+                        <button>Afegeix Nova Playlist</button>
+                    </a>
+                </div>
             </div> 
 
 
@@ -130,6 +146,7 @@
                     <?php
                         for ($i = 0; $i < count($playlist["songs"]); $i++) {
                             $name = $playlist["songs"][$i]["title"];
+                            $artist = $playlist["songs"][$i]["artist"];
                         ?>
                         <div class="cancons-playlist">
                             <div class="icona-play-canco">
@@ -138,10 +155,11 @@
 
                             <div class="nom-canco">   
                                 <p><?php echo $name; ?></p>
+                                <p class="description"><?php echo $artist;?></p>
                             </div>
 
                             <div class="eliminar-canco">
-                                <a href="cancons/delete.php?song=<?= $i?>&playlist_id=<?= $playlistId ?>">
+                                <a href="afegir/delete.php?song=<?= $i?>&playlist_id=<?= $playlistId ?>">
                                     <i class="fa-solid fa-trash" title="Esborrar"></i>
                                 </a>
                             </div>
@@ -149,8 +167,8 @@
                     <?php } ?>
 
                     <div class="afegir-canco">
-                        <a href="cancons/add-form.php?playlist_id=<?= $playlistId ?>">
-                            <button class="afegir-canco">Afegeix Nova Cançó</button>
+                        <a href="afegir/add-form.php?playlist_id=<?= $playlistId ?>">
+                            <button>Afegeix Nova Cançó</button>
                         </a>
                     </div>
             </div>

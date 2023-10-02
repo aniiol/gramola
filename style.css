@@ -68,22 +68,50 @@ header {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
 }
 
-.container-playlists li, a{
-    text-decoration: none;
-    font-size: 25px;
-    color: black;
+li {
+    color: red;
+    font-size: 20px;
+}
+
+.playlist {
+    display: flex;
+    align-items: center;
+    width: 80%;
     margin-top: 20px;
 }
 
-.container-playlists li, a:hover {
-    transition: all 0.5s ease;
-    color: red;
-}
-
-.description {
-    font-size: 12px;
+.nom-playlist {
+    width: 100%;
+    font-size: 20px;
     color: black;
 }
+
+.nom-playlist a {
+    text-decoration: none;
+    color: black;
+    font-size: 25px;
+}
+
+.nom-playlist a:hover {
+    color: red;
+    transition: all 0.5s ease;
+}
+
+.eliminar-playlist i {
+    font-size: 12px;
+    margin-right: -20px;
+    margin-bottom: 40px;
+}
+
+.afegir-playlist button {
+    height: 30px;
+    width: 50%;
+    border-radius: 10px;
+    margin-left: 80px;
+    background-color: #c6c6c6;
+    cursor: pointer;
+}
+
 
 
 /* ############# CONTAINER REPRODUCTOR */
@@ -266,6 +294,10 @@ h3 {
     width: 100%;
     font-size: 20px;
 }
+
+.description {
+    font-size: 12px;
+} 
 
 .eliminar-canco i {
     font-size: 12px;

@@ -184,13 +184,39 @@ function changeVolumeIcon () {
 }
 
 
-function moveMoreVolumeBar () {
-    
+function moveMoreVolumeBar() {
+    let currentWidth = "100%";
+
+    if (volumeBar.style.width) {
+        currentWidth = volumeBar.style.width;
+    }
+
+    let currentWidthNumber = parseInt(currentWidth);
+    currentWidthNumber += 10;
+
+    if (currentWidthNumber > 100) {
+        currentWidthNumber = 100;
+    }
+
+    volumeBar.style.width = currentWidthNumber + "%";
 }
 
-function moveLessVolumeBar () {
-    
+function moveLessVolumeBar() {
+    let currentWidth = "100%";
+
+    if (volumeBar.style.width) {
+        currentWidth = volumeBar.style.width;
+    }
+
+    let currentWidthNumber = parseInt(currentWidth);
+    currentWidthNumber -= 10;
+    if (currentWidthNumber < 0) {
+        currentWidthNumber = 0;
+    }
+    volumeBar.style.width = currentWidthNumber + "%";
 }
+
+
 
 // addEventListener per la funcio toggleAudio en el boto playButton
 playButton.addEventListener("click", toggleAudio);
@@ -228,6 +254,7 @@ moreVolume.addEventListener("click", moveMoreVolumeBar);
 
 // addEventListener per la funcio changeLessVolume en lessVolume
 lessVolume.addEventListener("click", changeLessVolume);
+lessVolume.addEventListener("click", moveLessVolumeBar);
 
 // Inicia la primera canço de la llista amb la seva informacio
 updateSongInfo(currentSongIndex);
