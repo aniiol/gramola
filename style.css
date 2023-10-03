@@ -297,10 +297,15 @@ h3 {
 
 .description {
     font-size: 12px;
-} 
+}
+
+.icona-play-canco i {
+    margin-bottom: 24px;
+}
 
 .eliminar-canco i {
     font-size: 12px;
+    margin-bottom: 24px;
 }
 
 .afegir-canco button {
@@ -310,4 +315,164 @@ h3 {
     margin-left: 80px;
     background-color: #c6c6c6;
     cursor: pointer;
+}
+
+
+
+
+/* ############# RESPONSIVE */
+
+@media screen and (max-width: 391px) {
+    header {
+        display: flex;
+    }
+
+    .titol h1{
+        font-size: 45px;
+        margin-left: 25%;
+    }
+
+    .burger {
+        display: inline;
+    }
+
+    .principal {
+        flex-direction: column;
+        margin-top: 120px;
+    }
+
+    /* ############# Reproductor */
+    .container-reproductor {
+        width:300px;
+        height: 410px;
+        order: 1;
+    }
+
+    .img-canco {
+        width: 220px;
+        height: 220px;
+        left: 0;
+        margin-left: 42px;
+    }
+
+    h2 {
+        font-size: 25px;
+        margin: 0;
+        margin-top: -20px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    /* ############# Barra */
+    .barra {
+        background-color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        height: 6px;
+        margin: 0;
+        margin-top: 40px;
+        margin-left: 10px;
+        width: 90%;
+    }
+
+    .progres {
+        background-color: #212121;
+        border-radius: 5px;
+        height: 100%;
+        width: 0%;
+    }
+
+    .duracio {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        top: -25px;
+        font-size: 12px;
+    }
+
+    /* ############# Controls */
+    .controls {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        top: 0;
+        left: 0;
+        margin-top: 18px;
+        margin-left: 23px;
+        width: auto;
+    }
+
+    .fa-solid {
+        font-size: 25px;
+    }
+
+    .boto-play {
+        font-size: 40px;
+        position: relative;
+        top: 0;
+        margin-top: -8px;
+    }
+
+    /* ############# VOLUM */
+    .volum {
+        margin-top: 20px;
+    }
+
+    .fa-volume-off {
+        font-size: 18px;
+    }
+
+    .fa-volume-low {
+        font-size: 18px;
+    }
+
+    .fa-volume-high {
+        font-size: 18px;
+    }
+
+    .barra-volum {
+        background-color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        height: 6px;
+        width: 15%;
+        margin-left: -20px;
+    }
+
+    .progres-volum {
+        background-color: #212121;
+        border-radius: 5px;
+        height: 100%;
+        width: 100%;
+    }
+
+    .fa-plus, .fa-minus {
+        margin-left: 10px;
+        margin-right: 5px;
+        font-size: 15px;
+    }
+
+
+
+    .session {
+        display: none;
+    }
+
+    .container-playlists {
+        width: 300px;
+        height: 300px;
+        margin-left: 0;
+        margin-top: 20px;
+        order: 2;
+    }
+
+    .container-songs {
+        width: 300px;
+        height: 410px;
+        margin: 0;
+        margin-top: 20px;
+        order: 3;
+    }
 }

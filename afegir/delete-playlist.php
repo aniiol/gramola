@@ -11,8 +11,7 @@
 
             // Eliminar arxiu json
             if (unlink($fileToDelete)) {
-                header("Location: ../index.php");
-                exit();
+                header("Location: ../index.php?playlist_id=0");
             }
         }
     }

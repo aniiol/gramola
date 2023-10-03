@@ -65,7 +65,6 @@
 
         <div class="principal">
 
-
             <!-- CONTAINER PLAYLISTS -->
             <div class="container-playlists">
                 <ul>
@@ -79,7 +78,7 @@
                                 </div>
 
                                 <div class="eliminar-playlist">
-                                    <a href="afegir/delete-playlist.php?playlist_id=<?= $playlistId ?>">
+                                    <a href="afegir/delete-playlist.php?playlist_id=<?= $i ?>">
                                         <i class="fa-solid fa-trash" title="Esborrar"></i>
                                     </a>
                                 </div>

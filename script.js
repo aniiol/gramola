@@ -119,9 +119,9 @@ function progressBar () {
 }
 
 // Funcio per fer fucnionar el click a la barra, on cliqui aniria la canço
-function setBar (event) {
+function setBar (e) {
     const barraAmple = barraProgres.clientWidth;
-    const clicX = event.offsetX; // OffsetX et dona la posicio del clic respecte de l'element actual
+    const clicX = e.offsetX; // OffsetX et dona la posicio del clic respecte de l'element actual
 
     const nouTemps = (clicX / barraAmple) * audio.duration;
     audio.currentTime = nouTemps;
@@ -217,6 +217,43 @@ function moveLessVolumeBar() {
 }
 
 
+// Funcio quan cliques espai que soni la canço
+function playSpace (e) {
+    if (e.keyCode == 32 || e.code == "Space") {
+        toggleAudio();
+    }
+}
+
+// Funcio quan cliques fletxa amunt que puji el volum
+function upArrow (e) {
+    if (e.keyCode == 38 || e.code == "ArrowUp") {
+        changeMoreVolume();
+        moveMoreVolumeBar();
+    }
+}
+
+// Funcio quan cliques fletxa abaix que baixi el volum
+function downArrow (e) {
+    if (e.keyCode == 40 || e.code == "ArrowDown") {
+        changeLessVolume();
+        moveLessVolumeBar();
+    }
+}
+
+// Funcio quan cliques fletxa de la dreta que avançi la canço
+function rightArrow (e) {
+    if (e.keyCode == 39 || e.code == "ArrowRight") {
+        
+    }
+}
+
+// Funcio quan cliques fletxa de la esquerra que retrocedeixi la canço
+function leftArrow (e) {
+    if (e.keyCode == 37 || e.code == "ArrowLeft") {
+
+    }
+}
+
 
 // addEventListener per la funcio toggleAudio en el boto playButton
 playButton.addEventListener("click", toggleAudio);
@@ -255,6 +292,10 @@ moreVolume.addEventListener("click", moveMoreVolumeBar);
 // addEventListener per la funcio changeLessVolume en lessVolume
 lessVolume.addEventListener("click", changeLessVolume);
 lessVolume.addEventListener("click", moveLessVolumeBar);
+
+document.addEventListener("keypress", playSpace);
+document.addEventListener("keydown", upArrow);
+document.addEventListener("keydown", downArrow);
 
 // Inicia la primera canço de la llista amb la seva informacio
 updateSongInfo(currentSongIndex);
