@@ -243,13 +243,16 @@ function downArrow (e) {
 // Funcio quan cliques fletxa de la dreta que avançi la canço
 function rightArrow (e) {
     if (e.keyCode == 39 || e.code == "ArrowRight") {
-        
+        audio.currentTime = audio.currentTime + 5;
+        progressBar();
     }
 }
 
 // Funcio quan cliques fletxa de la esquerra que retrocedeixi la canço
 function leftArrow (e) {
     if (e.keyCode == 37 || e.code == "ArrowLeft") {
+        audio.currentTime = audio.currentTime - 5;
+        progressBar();
 
     }
 }
@@ -296,6 +299,8 @@ lessVolume.addEventListener("click", moveLessVolumeBar);
 document.addEventListener("keypress", playSpace);
 document.addEventListener("keydown", upArrow);
 document.addEventListener("keydown", downArrow);
+document.addEventListener("keydown", rightArrow);
+document.addEventListener("keydown", leftArrow);
 
 // Inicia la primera canço de la llista amb la seva informacio
 updateSongInfo(currentSongIndex);
