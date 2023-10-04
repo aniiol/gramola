@@ -24,32 +24,33 @@ header {
     align-items: center;
 }
 
-.titol h1 {
+header h2 {
+    font-size: 10px;
+    margin-right: 50px;
+}
+
+header p {
+    color: blue;
+}
+
+.page-title h1 {
     font-size: 50px;
     text-shadow: 1px 2px 3px black;
     margin-left: 140px;
 }
 
-.session {
-    float: right;
-    margin-right: 30px;
-    margin-bottom: 50px;
+.burger {
+    display: none;
 }
 
-.session button {
-    height: 30px;
-    width: 110px;
-    border-radius: 10px;
-    margin-left: 80px;
-    background-color: #c6c6c6;
+.burger li {
+    list-style: none;
+}
+
+.burger a, p {
+    text-decoration: none ;
+    color: black;
     cursor: pointer;
-
-    box-shadow: 0 5px 10px #0000004d;
-    transition: all 0.5s ease;
-}
-
-.session button:hover {
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
 }
 
 
@@ -80,30 +81,30 @@ li {
     margin-top: 20px;
 }
 
-.nom-playlist {
+.name-playlist {
     width: 100%;
     font-size: 20px;
     color: black;
 }
 
-.nom-playlist a {
+.name-playlist a {
     text-decoration: none;
     color: black;
     font-size: 25px;
 }
 
-.nom-playlist a:hover {
+.name-playlist a:hover {
     color: red;
     transition: all 0.5s ease;
 }
 
-.eliminar-playlist i {
+.delete-playlist i {
     font-size: 12px;
     margin-right: -20px;
     margin-bottom: 40px;
 }
 
-.afegir-playlist button {
+.add-playlist button {
     height: 30px;
     width: 50%;
     border-radius: 10px;
@@ -131,7 +132,7 @@ li {
 
 
 /* ############# CARATULA */
-.img-canco {
+.img-song {
     width: 300px;
     height: 300px;
     position: relative;
@@ -139,7 +140,7 @@ li {
     left: 50px;
 }
 
-.img-canco .activa {
+.img-song .active {
     box-shadow: 0 5px 30px 5px rgba(0, 0, 0, 0.5);
     border-radius: 20px;
     width: 100%;
@@ -147,7 +148,7 @@ li {
     transition: all 0.5s;
 }
 
-.img-canco:hover .activa {
+.img-song:hover .active {
     box-shadow: 0 5px 30px 5px rgba(0, 0, 0, 0.8);
 }
 
@@ -169,7 +170,7 @@ h3 {
 
 
 /* ############# Barra */
-.barra {
+.bar {
     background-color: #fff;
     border-radius: 5px;
     cursor: pointer;
@@ -185,7 +186,7 @@ h3 {
     width: 0%;
 }
 
-.duracio {
+.duration {
     position: relative;
     top: -25px;
     display: flex;
@@ -213,7 +214,7 @@ h3 {
     filter: brightness(40%);
 }
 
-.boto-play {
+.play-button {
     font-size: 48px;
     position: relative;
     top: 7px;
@@ -244,7 +245,7 @@ h3 {
     margin-right: 30px;
 }
 
-.barra-volum {
+.volume-bar {
     background-color: #fff;
     border-radius: 5px;
     cursor: pointer;
@@ -322,18 +323,14 @@ h3 {
 
 /* ############# RESPONSIVE */
 
-@media screen and (max-width: 391px) {
+@media screen and (max-width: 480px) {
     header {
         display: flex;
     }
 
-    .titol h1{
+    .page-title h1{
         font-size: 45px;
         margin-left: 25%;
-    }
-
-    .burger {
-        display: inline;
     }
 
     .principal {
@@ -343,12 +340,12 @@ h3 {
 
     /* ############# Reproductor */
     .container-reproductor {
-        width:300px;
+        width: 300px;
         height: 410px;
         order: 1;
     }
 
-    .img-canco {
+    .img-song {
         width: 220px;
         height: 220px;
         left: 0;
@@ -366,7 +363,7 @@ h3 {
     }
 
     /* ############# Barra */
-    .barra {
+    .bar {
         background-color: #fff;
         border-radius: 5px;
         cursor: pointer;
@@ -384,7 +381,7 @@ h3 {
         width: 0%;
     }
 
-    .duracio {
+    .duration {
         position: relative;
         display: flex;
         justify-content: space-between;
@@ -408,7 +405,11 @@ h3 {
         font-size: 25px;
     }
 
-    .boto-play {
+    .fa-solid:hover {
+        filter: none;
+    }
+
+    .play-button {
         font-size: 40px;
         position: relative;
         top: 0;
@@ -432,7 +433,7 @@ h3 {
         font-size: 18px;
     }
 
-    .barra-volum {
+    .volume-bar {
         background-color: #fff;
         border-radius: 5px;
         cursor: pointer;
