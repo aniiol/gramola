@@ -1,15 +1,15 @@
 let currentSongIndex = 0;
 let randomMode = false;
 
-const nextButton = document.getElementById("seguent");
+const nextButton = document.getElementById("next");
 const stopButton = document.getElementById("stop");
 const playButton = document.getElementById("play");
-const previousButton = document.getElementById("anterior");
-const randomButton = document.getElementById("aleatori");
-const progres = document.getElementById("progres");
-const barraProgres = document.getElementById("barra-progres");
-const volumeBar = document.getElementById("progres-volum");
-const iconVolume = document.getElementById("icona-volum");
+const previousButton = document.getElementById("previous");
+const randomButton = document.getElementById("random");
+const progres = document.getElementById("progress");
+const barraProgres = document.getElementById("progress-bar");
+const volumeBar = document.getElementById("progress-volume");
+const iconVolume = document.getElementById("volume-icon");
 const moreVolume = document.getElementById("more-volume");
 const lessVolume = document.getElementById("less-volume");
 const audio = new Audio();
@@ -19,9 +19,9 @@ const audio = new Audio();
 function updateSongInfo(index) {
     const song = playlistData.songs[index];
 
-    document.getElementById("canco").textContent = song.title;
-    document.getElementById("artista").textContent = song.artist;
-    document.getElementById("images").src = song.cover;
+    document.getElementById("song").textContent = song.title;
+    document.getElementById("artist").textContent = song.artist;
+    document.getElementById("image").src = song.cover;
     audio.src = song.url;
 }
 
@@ -61,15 +61,14 @@ function previousSong() {
 }
 
 // Funcio per canviar el color de aleatori per despres fer funcionar la funcio randomSong
-function canviarColor() {
-    const aleatori = document.getElementById("aleatori");
-    const colorActual = window.getComputedStyle(aleatori).color;
+function changeColor() {
+    const colorActual = window.getComputedStyle(randomButton).color;
 
     if (colorActual == "rgb(102, 102, 102)") {
-        aleatori.style.color = "rgb(100, 189, 106)";
+        randomButton.style.color = "rgb(100, 189, 106)";
         randomMode = true;
     } else if (colorActual == "rgb(100, 189, 106)") {
-        aleatori.style.color = "rgb(102, 102, 102)";
+        randomButton.style.color = "rgb(102, 102, 102)";
         randomMode = false;
     }
 
@@ -268,7 +267,7 @@ audio.addEventListener("ended", nextSong);
 nextButton.addEventListener("click", nextSong);
 
 // addEventListener per la funcio randomSong en el boto randomButton
-randomButton.addEventListener("click", canviarColor);
+randomButton.addEventListener("click", changeColor);
 
 // addEventListener per la funcio randomSong en el boto nextButton
 randomButton.addEventListener("click", randomSong);
