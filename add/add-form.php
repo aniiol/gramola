@@ -10,7 +10,7 @@
 
     <body>
         <div class="principal">
-            <form action="add.php" method="post" enctype="multipart/form-data">
+            <form action="add-song.php" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="playlist_id" value="<?=$_GET["playlist_id"]?>">
 
                 <h1>Nom de la cançó:</h1>

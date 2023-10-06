@@ -25,8 +25,7 @@
 
     $playlist["songs"][] = $newSong;
 
-    $updatedPlaylistJSON = json_encode($playlist);
-    file_put_contents($files[$playlistId], $updatedPlaylistJSON);
+    file_put_contents($files[$playlistId], json_encode($playlist));
 
     move_uploaded_file($_FILES["images"]["tmp_name"], "../assets/{$imageName}");
     move_uploaded_file($_FILES["songs"]["tmp_name"], "../assets/audio/{$songName}");

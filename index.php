@@ -157,7 +157,7 @@
                             </div>
 
                             <div class="delete-song">
-                                <a href="add/delete.php?song=<?= $i?>&playlist_id=<?= $playlistId ?>">
+                                <a href="add/delete-song.php?song=<?= $i?>&playlist_id=<?= $playlistId ?>">
                                     <i class="fa-solid fa-trash" title="Esborrar"></i>
                                 </a>
                             </div>

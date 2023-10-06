@@ -18,14 +18,14 @@
         $data = file_get_contents($files[$playlistId]);
         $playlist = json_decode($data, true);
         
-       // Verifiquem si la cookie existeix i la descodifiquem amb decode
+        // Verifiquem si la cookie existeix i la descodifiquem
         if (isset($_COOKIE["playlist_reproducciones"])) {
             $playlistReproducciones = json_decode($_COOKIE["playlist_reproducciones"], true);
         } else {
             $playlistReproducciones = array();
         }
 
-        // Incrementa el contador de reproducciones de la playlist actual
+        // Incrementar contador de la playlist actual
         if (isset($playlistReproducciones[$playlistId])) {
             $playlistReproducciones[$playlistId]++;
         } else {

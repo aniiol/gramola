@@ -17,7 +17,7 @@
                 <input type="text" name="name-song" class="text-input" required>
 
                 <h1>Descripció de la playlist:</h1>
-                <input type="text" name="description" class="text-input" required>
+                <input type="text" name="description" class="text-input">
                 
                 <button>Enviar</button>
             </form>

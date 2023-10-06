@@ -142,6 +142,7 @@ function formatTime(time) {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
 
+    // seconds < 10 ? "0" : "" es per afegir un 0 si els numero son inferiors a 10 es a dir, sera 02 i no 2
     return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
 }
 
@@ -153,6 +154,7 @@ function playlistSong(index) {
     updateSongInfo(currentSongIndex);
     toggleAudio();
 }
+//aquesta funcio esta cridada en el html perque he hagut d'utilitzar php en onclick i no se si es pot fer per js.
 
 
 // Funcio per canviar el volum, pujar o baixar
@@ -295,6 +297,7 @@ moreVolume.addEventListener("click", moveMoreVolumeBar);
 lessVolume.addEventListener("click", changeLessVolume);
 lessVolume.addEventListener("click", moveLessVolumeBar);
 
+// Fer funcionar les flextes i l'espai
 document.addEventListener("keypress", playSpace);
 document.addEventListener("keydown", upArrow);
 document.addEventListener("keydown", downArrow);
