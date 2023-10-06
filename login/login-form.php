@@ -15,7 +15,7 @@
 
 
                 <h1>Nom:</h1>
-                <input type="text" name="name" class="text-input">
+                <input type="text" name="name" class="text-input" required>
                 
                 <button>Submit</button>
             </form>

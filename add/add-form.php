@@ -14,16 +14,16 @@
                 <input type="hidden" name="playlist_id" value="<?=$_GET["playlist_id"]?>">
 
                 <h1>Nom de la cançó:</h1>
-                <input type="text" name="name-song" class="text-input">
+                <input type="text" name="name-song" class="text-input" required>
 
                 <h1>Nom de l'artista/grup:</h1>
-                <input type="text" name="name-artist" class="text-input">
+                <input type="text" name="name-artist" class="text-input" required>
 
                 <h1>Portada del l'album/artista:</h1>
-                <input type="file" name="images" accept = ".jpg, .jpeg, .png">
+                <input type="file" name="images" accept = ".jpg, .jpeg, .png" required>
                 
                 <h1>Pista d'audio:</h1>
-                <input type="file" name="songs" accept = ".mp3">
+                <input type="file" name="songs" accept = ".mp3" required>
                 
                 <button>Enviar</button>
             </form>

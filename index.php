@@ -77,7 +77,7 @@
                                 </div>
 
                                 <div class="delete-playlist">
-                                    <a href="afegir/delete-playlist.php?playlist_id=<?= $i ?>">
+                                    <a href="add/delete-playlist.php?playlist_id=<?= $i ?>">
                                         <i class="fa-solid fa-trash" title="Esborrar"></i>
                                     </a>
                                 </div>
@@ -86,7 +86,7 @@
                     <?php } ?>
                 </ul>
                 <div class="add-playlist">
-                    <a href="afegir/add-playlist.php?playlist_id=<?= $playlistId ?>">
+                    <a href="add/add-playlist.php?playlist_id=<?= $playlistId ?>">
                         <button>Afegeix Nova Playlist</button>
                     </a>
                 </div>
@@ -146,26 +146,26 @@
                             $name = $playlist["songs"][$i]["title"];
                             $artist = $playlist["songs"][$i]["artist"];
                         ?>
-                        <div class="cancons-playlist">
+                        <div class="songs-playlist">
                             <div class="icona-play-canco">
-                                <i class="fa-solid fa-play reprodueix-llista" title="Reprodueix" id="canco<?php echo $i ?>" onclick="playlistSong(<?php echo $i ?>)"></i>
+                                <i class="fa-solid fa-play" tile="Reprodueix" id="canco<?php echo $i ?>" onclick="playlistSong(<?php echo $i ?>)"></i>
                             </div>
 
-                            <div class="nom-canco">   
+                            <div class="song-name">   
                                 <p><?php echo $name; ?></p>
                                 <p class="description"><?php echo $artist;?></p>
                             </div>
 
-                            <div class="eliminar-canco">
-                                <a href="afegir/delete.php?song=<?= $i?>&playlist_id=<?= $playlistId ?>">
+                            <div class="delete-song">
+                                <a href="add/delete.php?song=<?= $i?>&playlist_id=<?= $playlistId ?>">
                                     <i class="fa-solid fa-trash" title="Esborrar"></i>
                                 </a>
                             </div>
                         </div>
                     <?php } ?>
 
-                    <div class="afegir-canco">
-                        <a href="afegir/add-form.php?playlist_id=<?= $playlistId ?>">
+                    <div class="add-song">
+                        <a href="add/add-form.php?playlist_id=<?= $playlistId ?>">
                             <button>Afegeix Nova Cançó</button>
                         </a>
                     </div>

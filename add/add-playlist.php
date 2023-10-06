@@ -14,10 +14,10 @@
                 <input type="hidden" name="playlist_id" value="<?=$_GET['playlist_id']?>">
 
                 <h1>Nom de la playlist:</h1>
-                <input type="text" name="name-song" class="text-input">
+                <input type="text" name="name-song" class="text-input" required>
 
                 <h1>Descripció de la playlist:</h1>
-                <input type="text" name="description" class="text-input">
+                <input type="text" name="description" class="text-input" required>
                 
                 <button>Enviar</button>
             </form>
