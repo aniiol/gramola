@@ -31,4 +31,3 @@
     }
 
     header("Location: ../index.php?playlist_id={$playlistId}");
-?>
