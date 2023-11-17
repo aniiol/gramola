@@ -7,4 +7,5 @@ Primer projecte de 2n de DAW Institut Cendrassos.
 
 
 Iniciar la Gramola:
-  php -S localhost:8080
+
+    php -S localhost:8080
