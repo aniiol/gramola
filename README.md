@@ -1,4 +1,4 @@
-# gramola
+# Gramola
 Projecte 1 DAW2 - GRAMOLA
 
 Primer projecte de 2n de DAW Institut Cendrassos.
