@@ -1,0 +1,49 @@
+name: laravel-build
+run-name: ${{ github.actor }} is building new app version
+on: [push]
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+
+            - name: Setup PHP
+              uses: shivammathur/setup-php@master
+              with:
+                  php-version: 8.3.
+                  extensions: mbstring, ctype, fileinfo, openssl, PDO, bcmath, json, tokenizer, xml
+
+            - name: Clean up
+              run: |
+                  rm -rf node_modules
+                  rm -rf storage
+
+            - name: Archive application
+              run: tar -czf app.tgz ./*
+            - name: ssh scp ssh pipelines
+              uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+              env:
+                  WELCOME: 'ssh scp ssh pipelines'
+                  LASTSSH: 'Doing something after copying'
+              with:
+                  host: ${{ secrets.SSH_HOST }}
+                  user: ${{ secrets.SSH_USER }}
+                  key: ${{ secrets.SSH_KEY }}
+                  port: ${{ secrets.SSH_PORT }}
+                  connect_timeout: 10s
+                  first_ssh: |
+                      sudo rm -R ${{ secrets.SSH_DIR }}
+                      sudo mkdir -p ${{ secrets.SSH_DIR }}
+                      sudo chown -R www-data:www-data ${{ secrets.SSH_DIR }}
+                      sudo chmod 777 ${{ secrets.SSH_DIR }}
+                      cd ${{ secrets.SSH_DIR }}
+                  scp: |
+                      echo "Descarregant el fitxer..."
+                      './app.tgz' => ${{ secrets.SSH_DIR }}
+                      echo "Fitxer descarregat"
+                  last_ssh: |
+                      cd ${{ secrets.SSH_DIR }} 
+                      echo "Descomprimint fitxer..."
+                      tar -xzf app.tgz
+                      echo "Fitxer descomprimit"
